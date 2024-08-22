@@ -9,9 +9,15 @@ const FilterProducts = ({ onFilterChange }) => {
         <label htmlFor="type">Type: </label>
         <select id="type" onChange={(e) => onFilterChange('type', e.target.value)}>
           <option value="all">All</option>
-          <option value="laptop">Laptop</option>
-          <option value="desktop">Desktop</option>
-          <option value="accessory">Accessory</option>
+          <option value="cpu">CPU</option>
+          <option value="gpu">GPU</option>
+          <option value="ram">RAM</option>
+          <option value="storage">Storage</option>
+          <option value="motherboard">Motherboard</option>
+          <option value="cooling">Cooling</option>
+          <option value="psu">PSU</option>
+          <option value="case">Case</option>
+          <option value="peripheral">Peripheral</option>
         </select>
       </div>
       <div>

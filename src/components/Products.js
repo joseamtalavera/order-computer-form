@@ -5,17 +5,17 @@ import Card from './Card';
 import OrderModal from './OrderModal';
 
 const initialProducts = [
-    { id: 1, name: 'Apple MacBook Pro', image: 'macbook_pro.jpg', features: '16-inch, 16GB RAM, 512GB SSD', price: '$2399' },
-    { id: 2, name: 'Dell XPS 13', image: 'dell_xps_13.jpg', features: '13.3-inch, 8GB RAM, 256GB SSD', price: '$999' },
-    { id: 3, name: 'HP Spectre x360', image: 'hp_spectre_x360.jpg', features: '13.3-inch, 16GB RAM, 512GB SSD', price: '$1299' },
-    { id: 4, name: 'Lenovo ThinkPad X1 Carbon', image: 'lenovo_thinkpad_x1.jpg', features: '14-inch, 16GB RAM, 1TB SSD', price: '$1499' },
-    { id: 5, name: 'Asus ROG Zephyrus G14', image: 'asus_rog_zephyrus.jpg', features: '14-inch, 16GB RAM, 1TB SSD', price: '$1449' },
-    { id: 6, name: 'Microsoft Surface Laptop 4', image: 'surface_laptop_4.jpg', features: '13.5-inch, 8GB RAM, 256GB SSD', price: '$999' },
-    { id: 7, name: 'Acer Swift 3', image: 'acer_swift_3.jpg', features: '14-inch, 8GB RAM, 512GB SSD', price: '$679' },
-    { id: 8, name: 'Razer Blade 15', image: 'razer_blade_15.jpg', features: '15.6-inch, 16GB RAM, 512GB SSD', price: '$1699' },
-    { id: 9, name: 'Apple MacBook Air', image: 'macbook_air.jpg', features: '13.3-inch, 8GB RAM, 256GB SSD', price: '$999' },
-    { id: 10, name: 'LG Gram 17', image: 'lg_gram_17.jpg', features: '17-inch, 16GB RAM, 1TB SSD', price: '$1799' },
-  ];
+    { id: 1, name: 'Intel Core i9-11900K', image: 'intel_core_i9.jpg', features: '8 Cores, 16 Threads, 3.5 GHz', price: '$539' },
+    { id: 2, name: 'AMD Ryzen 9 5900X', image: 'amd_ryzen_9.jpg', features: '12 Cores, 24 Threads, 3.7 GHz', price: '$499' },
+    { id: 3, name: 'NVIDIA GeForce RTX 3080', image: 'nvidia_rtx_3080.jpg', features: '10GB GDDR6X, 1.71 GHz', price: '$699' },
+    { id: 4, name: 'Corsair Vengeance LPX 16GB', image: 'corsair_vengeance.jpg', features: '16GB (2 x 8GB), DDR4, 3200MHz', price: '$89' },
+    { id: 5, name: 'Samsung 970 EVO Plus 1TB', image: 'samsung_970_evo.jpg', features: '1TB, NVMe M.2, 3500MB/s', price: '$169' },
+    { id: 6, name: 'ASUS ROG Strix Z590-E', image: 'asus_rog_strix.jpg', features: 'LGA 1200, ATX, WiFi 6', price: '$379' },
+    { id: 7, name: 'Cooler Master Hyper 212', image: 'cooler_master_hyper.jpg', features: '120mm PWM Fan, 4 Heatpipes', price: '$34' },
+    { id: 8, name: 'EVGA SuperNOVA 750 G5', image: 'evga_supernova.jpg', features: '750W, 80+ Gold, Fully Modular', price: '$129' },
+    { id: 9, name: 'NZXT H510', image: 'nzxt_h510.jpg', features: 'ATX Mid Tower, Tempered Glass', price: '$69' },
+    { id: 10, name: 'Logitech G Pro X', image: 'logitech_g_pro_x.jpg', features: 'Mechanical, RGB, Tactile Switches', price: '$129' },
+];
 
 const Products = ({sortOrder, filters}) => {
   const [products, setProducts] = useState(initialProducts);
