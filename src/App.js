@@ -22,7 +22,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Best Selling Computer Components</h1>
+      <div className='app-bar'>
+        <h1>Best Selling Computer Components</h1>
+      </div>
       <SortProducts onSortChange={handleSortChange} />
       <div className='main-content'>
         <aside className='sidebar'>

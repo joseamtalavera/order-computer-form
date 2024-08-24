@@ -12,19 +12,34 @@ const OrderModal = ({ product, onClose }) => {
     // Handle form submission logic
     onClose();
   };
+  const priceString = product.price.toString();
+  const price = parseFloat(priceString.replace('$', ''));
+  const total = (quantity * price).toFixed(2);
+  const tax = (total * 0.22).toFixed(2);
+  const priceTax = (parseFloat(total) + parseFloat(tax)).toFixed(2);
 
   return (
     <div className="modal">
       <div className="modal-content">
         <span className="close" onClick={onClose}>&times;</span>
-        <h2>Order {product.name}</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Quantity:
-            <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-          </label>
-          <label>
-            Name:
+        <div className='modal-header'>
+            <img src={product.image} alt={product.name} className='modal-image'/>
+            <div className='modal-header-info'>
+              <h2>Order {product.name}</h2>
+              <label>
+                Quantity:
+                <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+              </label>
+            </div>
+        </div>
+        <div className='modal-body'>
+          <p>Price: ${price}</p>
+          <p>Total Price: ${total}</p>
+          <p>Tax (22%): ${tax}</p>
+          <p>Price with Tax: ${priceTax}</p>
+          <form onSubmit={handleSubmit}> 
+            <label>
+              Name:
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
           </label>
           <label>
@@ -35,6 +50,7 @@ const OrderModal = ({ product, onClose }) => {
         </form>
       </div>
     </div>
+  </div>
   );
 };
 

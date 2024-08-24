@@ -1,13 +1,14 @@
 // src/components/SortProducts.js
 import React from 'react';
+import '../App.css';
 
 const SortProducts = ({ onSortChange }) => {
   return (
     <div className="sort-products">
-      <label htmlFor="sort">Sort by Price: </label>
-      <select id="sort" onChange={(e) => onSortChange(e.target.value)}>
-        <option value="asc">Low to High</option>
-        <option value="desc">High to Low</option>
+      <label htmlFor="sortOrder">Sort: </label>
+      <select id="sortOrder" onChange={(e) => onSortChange(e.target.value)}>
+        <option value="asc">Price Ascending</option>
+        <option value="desc">Price Descending</option>
       </select>
     </div>
   );
