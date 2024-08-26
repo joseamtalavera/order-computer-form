@@ -28,7 +28,10 @@ const OrderModal = ({ product, onClose }) => {
               <h2>Order {product.name}</h2>
               <label>
                 Quantity:
-                <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+                <input 
+                  type="number" 
+                  value={quantity} 
+                  onChange={(e) => setQuantity(e.target.value)} />
               </label>
             </div>
         </div>

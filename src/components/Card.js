@@ -3,6 +3,9 @@
 import React from 'react';
 
 const Card = ({ product, onBuyClick }) => {
+  /* const formatPrice = (price) => {
+    return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(price);
+  } */
   return (
     <div className="product-card">
         <img src={product.image} alt={product.name} />
