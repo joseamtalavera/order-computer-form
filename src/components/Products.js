@@ -6,7 +6,7 @@ import OrderModal from './OrderModal';
 
 const initialProducts = [
   { id: 1, name: 'Intel Core i9-11900K', image: '/freepik.jpeg', features: '8 Cores, 16 Threads, 3.5 GHz', price: '$539', type: 'cpu' },
-  { id: 2, name: 'AMD Ryzen 9 5900X', image: 'amd_ryzen_9.jpg', features: '12 Cores, 24 Threads, 3.7 GHz', price: '$499', type: 'cpu' },
+  // { id: 2, name: 'AMD Ryzen 9 5900X', image: 'amd_ryzen_9.jpg', features: '12 Cores, 24 Threads, 3.7 GHz', price: '$499', type: 'cpu' },
   { id: 3, name: 'NVIDIA GeForce RTX 3080', image: 'nvidia_rtx_3080.jpg', features: '10GB GDDR6X, 1.71 GHz', price: '$699', type: 'gpu' },
   { id: 4, name: 'Corsair Vengeance LPX 16GB', image: 'corsair_vengeance.jpg', features: '16GB (2 x 8GB), DDR4, 3200MHz', price: '$89', type: 'ram' },
   { id: 5, name: 'Samsung 970 EVO Plus 1TB', image: 'samsung_970_evo.jpg', features: '1TB, NVMe M.2, 3500MB/s', price: '$169', type: 'storage' },
@@ -34,11 +34,11 @@ const Products = ({sortOrder, filters}) => {
     if (filters.type !== 'all') {
       filteredProducts = filteredProducts.filter(product => product.type === filters.type);
     }
-    if (filters.priceMin) {
-      filteredProducts = filteredProducts.filter(product => product.price >= filters.priceMin);
+    if (filters.minPrice !== undefined) {
+      filteredProducts = filteredProducts.filter(product => product.price >= filters.minPrice);
     }
-    if (filters.priceMax) {
-      filteredProducts = filteredProducts.filter(product => product.price <= filters.priceMax);
+    if (filters.maxPrice !== undefined) {
+      filteredProducts = filteredProducts.filter(product => product.price <= filters.maxPrice);
     }
     if (sortOrder === 'asc') {
       filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
@@ -58,12 +58,14 @@ const Products = ({sortOrder, filters}) => {
   };
   
   return (
-    <div className="product-list">
+    <>
+    {/* <div className="product-list"> */}
       {products.map(product => (
         <Card key={product.id} product={product} onBuyClick={handleBuyClick} />
       ))}
       {selectedProduct && <OrderModal product={selectedProduct} onClose={handleCloseModal} />}
-    </div>
+    {/* </div> */}
+    </>
   );
   };
   

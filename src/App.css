@@ -17,12 +17,44 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; ;
 }
 
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-content {
+  display: flex;
+  width: 100%;
+} 
+
+.app-bar h1 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; ;
+}
+
+/* css for sidebar */
+.sidebar {
+  width: 20%;
+  padding: 10px;
+}
+
 /* css for product list */
 .product-list {
+  width: 60%;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 20px;
   background-color: white;
 }
 
@@ -78,7 +110,10 @@
 
 /* css for filter */
 .filter-products {
-  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
   padding: auto;
   background-color: #fff;
   border-radius: 0px;
@@ -91,6 +126,7 @@
   padding: 10px;
   border-radius: 0px;
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 .filter-group {
@@ -121,22 +157,17 @@
   content: '\f077'; /* FontAweson arrow up */
 }
 
-.filter-group select {
-  display: none;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-  margin-right: 10px;
-  width: 100px;
-}
-
-.filter-group.open select {
-  display: block;
-}
-
 .orange-color {
   background-color: orange;
   color: white;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
 }
 
 .filter-option input {
@@ -148,26 +179,13 @@
   box-sizing: border-box;
 }
 
-.filter-option input:focus {
-  outline: none;
-  border: none;
-  border-radius: 0px;
+.filter-option .custom-input {
+  margin-right: 10px; /* Adjust space between custom inputs */
 }
 
-/* .filter-option:focus-within{
-  background-color: #e0e0e0;
-}  */
-
-.filter-option {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  cursor: pointer;
+.filter-option .reset-icon {
+  margin-left: auto; /* Push the reset icon to the right */
 }
-
-/* .filter-option:hover {
-  background-color: #e0e0e0;
-} */
 
 .circle {
   display: inline-block;
@@ -196,6 +214,42 @@
 .reset-icon {
   color: orange;
   cursor: pointer;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid orange;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px; 
+} 
+
+.custom-input button {
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1em;
+  color: orange;
+}
+
+.custom-input input {
+  width: 60px;
+  text-align: center;
+  border: 1px none;
+  padding: 5px;
+  margin: 0 5px;
+} 
+
+.custom-input button:hover {
+  background-color: #e0e0e0;
 }
 
 /* css for sort */
@@ -301,30 +355,34 @@
   background-color: #2ecc71;
 }
 
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
+/* css for @media queries */
+
+/* Media query for screens between 1024px and 1500px */
+@media (min-width: 1024px) and (max-width: 1500px) {
+  .price-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Media query for tablet view (iPad) */
+@media (max-width: 1024px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sidebar {
+    width: 75%;
+    margin: auto;
+    
+  }
+
+  .product-list {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+
 }
 
-.main-content {
-  display: flex;
-  width: 100%;
-}
-
-.sidebar {
-  width: 20%;
-  padding: 10px;
-}
-
-.product-list {
-  width: 80%;
-  padding: 10px;
-}

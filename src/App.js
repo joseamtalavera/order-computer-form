@@ -3,11 +3,11 @@ import React from 'react';
 import './App.css';
 import Products from './components/Products';
 import SortProducts from './components/SortProducts';
-import FilterProducts from './components/FilterProducts';
+import FilterProductos from './components/FilterProductos';
 
 function App() {
   const [sortOrder, setSortOrder] = React.useState('asc');
-  const [filters, setFilters] = React.useState({ type: 'all', priceMin: 0, priceMax: Infinity });
+  const [filters, setFilters] = React.useState({ type: 'all', minPrice: 0, maxPrice: Infinity });
 
   const handleSortChange = (order) => {
     setSortOrder(order);
@@ -28,7 +28,7 @@ function App() {
       <SortProducts onSortChange={handleSortChange} />
       <div className='main-content'>
         <aside className='sidebar'>
-          <FilterProducts onFilterChange={handleFilterChange} />
+          <FilterProductos onFilterChange={handleFilterChange}/>
         </aside>
         <main className='product-list'>
           <Products sortOrder={sortOrder} filters={filters} />
