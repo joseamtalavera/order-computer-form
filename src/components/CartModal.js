@@ -1,32 +1,25 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
+import FinalPayment from './FinalPayment';
 
-const CartModal = ({ cart, onClose }) => {
-  const [actualCart, setActualCart] = useState(cart);
-
-  const handleAmountChange = (index, newAmount) => {
-    const updatedCart = actualCart.map((item, i) => 
-      i === index ? { ...item, amount: newAmount } : item
-    );
-    setActualCart(updatedCart);
-  };
-
-  const handleRemoveItem = (index) => {
-    const updatedCart = actualCart.filter((item, i) => i !== index);
-      setActualCart(updatedCart);
-  }
-
-  const handleProceedToPayment = () => {
-    console.log('Proceeding to checkout:', actualCart);
+const CartModal = ({ cart, onClose, onRemoveItem, onAmountChange }) => {
+  const [isPaymentFormVisible, setIsPaymentFormVisible] = useState(false);
+  
+ const handleProceedToPayment = () => {
+    setIsPaymentFormVisible(true);
   }
 
   return (
     <div className="modal">
       <div className="modal-content">
         <span className="close" onClick={onClose}>&times;</span>
+        {isPaymentFormVisible ? (
+          <FinalPayment cart={cart} onBackToCart={()=> setIsPaymentFormVisible(false)} />
+        ) : (
+          <>
         <h2>Your Cart</h2>
-        <hr className="divider" />
+        <div className="divider"></div>
         <ul>
-          {actualCart.map((item, index) => (
+          {cart.map((item, index) => (
             <li key={index} className="cart-item">
                 <img src={item.image} alt={item.name} className='item-image'/>
                 <div className="item-details">
@@ -44,24 +37,29 @@ const CartModal = ({ cart, onClose }) => {
                         type="number" 
                         value={item.amount || 1} 
                         min="1"
-                        onChange={(e) => handleAmountChange(index, parseInt(e.target.value))}
+                        onChange={(e) => onAmountChange(index, parseInt(e.target.value))}
                       />
                     </label>
-                    <button 
-                      className="delete-button"
-                      onClick={() => handleRemoveItem(index)}
+                    <i
+                      className="fas fa-trash delete-icon"
+                      //onClick={(e) => handleRemoveItem(index, parseInt(e.target.value))}
+                      onClick={() => onRemoveItem(index)}
                     >
-                      Remove
-                    </button>
+                    </i>
                   </div>
                   <hr className="item-divider"/>
                 </div>
             </li>
           ))}
         </ul>
-        <button className="proceed-button" onClick={handleProceedToPayment}>
-          Proceed to Checkout
+        <button 
+          className="proceed-button" 
+          onClick={handleProceedToPayment}
+        >
+          Proceed to Payment
         </button>
+        </>
+        )}
       </div>
     </div>
   );
