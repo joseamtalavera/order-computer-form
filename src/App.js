@@ -33,9 +33,22 @@ function App() {
   }
 
   const handleAddToCart = (product) => {
-    setCart((prevCart) => [...cart, product]);
+    setCart((prevCart) => {
+      // Find the index of the previous cart item that matches the current product
+      const existingItemIndex = prevCart.findIndex(item => item.id === product.id);
+      if (existingItemIndex !== -1) {
+        // If the item already exists in the cart, update the amount
+        const updatedCart = prevCart.map((item, index) => 
+          index === existingItemIndex ? { ...item, amount: item.amount + 1 } : item
+        );
+        return updatedCart;
+      } else {
+        // If the item is not in the cart, add it with an amount of 1
+        return [...prevCart, { ...product, amount: 1 }];
+      }
+    });
     setIsCartOpen(true);
-  }
+  };
 
   return (
     <div className="App">

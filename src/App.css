@@ -292,7 +292,9 @@
   background: #fff;
   padding: 20px;
   border-radius: 5px;
-  width: 300px;
+  width: 500px;
+  max-width: 800px;
+  margin: auto;
   position: relative;
 }
 
@@ -324,7 +326,7 @@ ul {
 
 .cart-item {
   display: flex;
-  align-items: center;
+  align-items: column;
   padding: 10px 0;
 }
 
@@ -336,21 +338,39 @@ ul {
 
 .item-details {
   flex: 1;
+}
+
+.item-info {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .item-name {
   font-weight: bold;
+  flex: 1;
 }
 
 .item-price {
-  margin-top: 5px;
+  margin-left: auto;
   color: green;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.item-info2 {
+  margin-bottom: 10px; /* Add margin to separate item features from actions */
+}
+
+.item-feature {
+  display: block; /* Ensure item features appear on a new line */
+  font-size: 0.875em; /* Make item features text smaller */
+  color: #555; /* Change item features text color */
 }
 
 .item-actions {
   display: flex;
+  justify-self: space-between;
   align-items: center;
   margin-top: 10px;
 }
@@ -373,6 +393,7 @@ ul {
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
+  margin-left: auto;
 }
 
 .delete-button:hover {
@@ -381,7 +402,25 @@ ul {
 
 .item-divider {
   border: 1px solid orange;
-  margin-top: 10px;
+  margin: 10px 0;
+}
+
+.proceed-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.proceed-button:hover {
+  background-color: #45a049; /* Darker green on hover */
 }
 
 /* css for @media queries */

@@ -20,7 +20,7 @@ const initialProducts = [
 
 const Products = ({sortOrder, filters, onAddToCart}) => {
   const [products, setProducts] = useState(initialProducts);
-
+  
   useEffect(() => {
     let filteredProducts = initialProducts.map(product => ({ 
         ...product,
@@ -49,15 +49,11 @@ const Products = ({sortOrder, filters, onAddToCart}) => {
     setProducts(filteredProducts);
   }, [sortOrder, filters]);
   
-  const handleSelectProduct = (product) => {
-    onAddToCart(product);
-  }
-  
   return (
     <>
     {/* <div className="product-list"> */}
       {products.map(product => (
-        <Card key={product.id} product={product} onBuyClick={handleSelectProduct} />
+        <Card key={product.id} product={product} onBuyClick={onAddToCart} />
       ))}
       {/* {isCartOpen && <CartModal cart={cart} onClose={handleCloseModal} />} */}
     {/* </div> */}

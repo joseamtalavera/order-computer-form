@@ -16,7 +16,7 @@ const Card = ({ product, onBuyClick }) => {
             <p className='price'>{product.price}</p>
             <button className='select-button' onClick={() => onBuyClick(product)}>Select</button>
         </div>
-    </div>
+      </div>
   );
 };
 
