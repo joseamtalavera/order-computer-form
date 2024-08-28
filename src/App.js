@@ -6,12 +6,14 @@ import SortProducts from './components/SortProducts';
 import FilterProductos from './components/FilterProductos';
 import CartModal from './components/CartModal';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+//import FinalPayment from './components/FinalPayment';
 
 function App() {
   const [sortOrder, setSortOrder] = React.useState('asc');
   const [filters, setFilters] = React.useState({ type: 'all', minPrice: 0, maxPrice: Infinity });
   const [cart, setCart] = React.useState([]);
   const [isCartOpen, setIsCartOpen] = React.useState(false);
+  //const [isPaymentFormOpen, setIsPaymentFormOpen] = React.useState(false);
 
   const handleSortChange = (order) => {
     setSortOrder(order);
@@ -50,6 +52,32 @@ function App() {
     setIsCartOpen(true);
   };
 
+  const handleRemoveItem = (index) => {
+    setCart((prevCart) => {
+      const updatedCart = prevCart.filter((item, i) => i !== index);
+      return updatedCart;
+    });
+  }
+
+  const handleAmountChange = (index, newAmount) => {
+    setCart((prevCart) => {
+      const updatedCart = prevCart.map((item, i) => 
+        i === index ? { ...item, amount: newAmount } : item
+      );
+      return updatedCart;
+    });
+  }
+
+ /*  const handleProceedToPayment = () => {
+    setIsCartOpen(false);
+    setIsPaymentFormOpen(true);
+  }
+
+  const handleBackToCart = () => {
+    setIsPaymentFormOpen(false);
+    setIsCartOpen(true);
+  } */
+
   return (
     <div className="App">
       <div className='app-bar'>
@@ -67,7 +95,8 @@ function App() {
           <Products sortOrder={sortOrder} filters={filters} onAddToCart={handleAddToCart}/>
         </main>
       </div>
-      {isCartOpen && <CartModal cart={cart} onClose={handleCloseModal} />}
+      {isCartOpen && <CartModal cart={cart} onClose={handleCloseModal} onRemoveItem={handleRemoveItem} onAmountChange={handleAmountChange} />}
+      
     </div>
   );
 }

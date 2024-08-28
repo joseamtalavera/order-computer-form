@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
-//import OrderModal from './OrderModal';
-//import CartModal from './CartModal';
 
 const initialProducts = [
   { id: 1, name: 'VertexX9 Pro CPU', image: '/VertexX9 Pro.png', features: 'CPU, 8 Cores, 16 Threads, 3.5 GHz', price: '539€', type: 'cpu' },
@@ -24,13 +22,8 @@ const Products = ({sortOrder, filters, onAddToCart}) => {
   useEffect(() => {
     let filteredProducts = initialProducts.map(product => ({ 
         ...product,
-        numericPrice: parseInt(product.price.replace('$', '')),
+        numericPrice: parseInt(product.price.replace('€', '')),
      }));
-
-    console.log('Filters:', filters);
-    console.log('Sort Order:', sortOrder);
-    console.log('Initial Products:', initialProducts);
-
     if (filters.type !== 'all') {
       filteredProducts = filteredProducts.filter(product => product.type === filters.type);
     }
@@ -45,18 +38,14 @@ const Products = ({sortOrder, filters, onAddToCart}) => {
     } else {
       filteredProducts = filteredProducts.sort((a, b) => b.numericPrice - a.numericPrice);
     }
-    console.log('Products:', filteredProducts);
     setProducts(filteredProducts);
   }, [sortOrder, filters]);
   
   return (
     <>
-    {/* <div className="product-list"> */}
       {products.map(product => (
         <Card key={product.id} product={product} onBuyClick={onAddToCart} />
       ))}
-      {/* {isCartOpen && <CartModal cart={cart} onClose={handleCloseModal} />} */}
-    {/* </div> */}
     </>
   );
   };
