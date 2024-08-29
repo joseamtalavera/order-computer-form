@@ -1,39 +1,39 @@
 // src/App.js
-import React from 'react';
+
+import React, {useState}from 'react';
 import './App.css';
 import Products from './components/Products';
 import SortProducts from './components/SortProducts';
 import FilterProductos from './components/FilterProductos';
 import CartModal from './components/CartModal';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-//import FinalPayment from './components/FinalPayment';
 
 function App() {
-  const [sortOrder, setSortOrder] = React.useState('asc');
-  const [filters, setFilters] = React.useState({ type: 'all', minPrice: 0, maxPrice: Infinity });
-  const [cart, setCart] = React.useState([]);
-  const [isCartOpen, setIsCartOpen] = React.useState(false);
-  //const [isPaymentFormOpen, setIsPaymentFormOpen] = React.useState(false);
+  const [sortOrder, setSortOrder] = useState('asc');
+  const [filters, setFilters] = useState({ type: 'all', minPrice: 0, maxPrice: Infinity }); // Intial state showing all products, with price range from 0 to infinity
+  const [cart, setCart] = useState([]);
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
 
-  const handleSortChange = (order) => {
+  const handleSort = (order) => {
     setSortOrder(order);
   }
 
-  const handleFilterChange = (filterType, value) => {
+  const handleFilter = (filterType, value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       [filterType]: value,
     }));
   }
 
-  const handleCartClick = () => {
-    setIsCartOpen(true);
+  const handleIconCartClick = () => {
+    setIsCartModalOpen(true);
   }
 
-  const handleCloseModal = () => {
-    setIsCartOpen(false);
+  const handleCloseCartModal = () => {
+    setIsCartModalOpen(false);
   }
-
+  // This funcition will add product to the cart
+  // It ensueres that the amount of the product is updated if the product already exists in the cart
   const handleAddToCart = (product) => {
     setCart((prevCart) => {
       // Find the index of the previous cart item that matches the current product
@@ -41,6 +41,7 @@ function App() {
       if (existingItemIndex !== -1) {
         // If the item already exists in the cart, update the amount
         const updatedCart = prevCart.map((item, index) => 
+          // This line ensures that only the amount of the item that matches the current product is updated
           index === existingItemIndex ? { ...item, amount: item.amount + 1 } : item
         );
         return updatedCart;
@@ -49,7 +50,7 @@ function App() {
         return [...prevCart, { ...product, amount: 1 }];
       }
     });
-    setIsCartOpen(true);
+    setIsCartModalOpen(true);
   };
 
   const handleRemoveItem = (index) => {
@@ -68,34 +69,27 @@ function App() {
     });
   }
 
- /*  const handleProceedToPayment = () => {
-    setIsCartOpen(false);
-    setIsPaymentFormOpen(true);
-  }
-
-  const handleBackToCart = () => {
-    setIsPaymentFormOpen(false);
-    setIsCartOpen(true);
-  } */
-
   return (
     <div className="App">
       <div className='app-bar'>
         <h1>Best Selling Computer Components</h1>
-        <div className='cart-icon' onClick={handleCartClick}>
-          < i className="fas fa-shopping-cart"></i>
+        {/* onClick in the cart icon will make the modal to open */}
+        <div className='cart-icon' onClick={handleIconCartClick}>
+          <i className="fas fa-shopping-cart"></i>
         </div>
       </div>
-      <SortProducts onSortChange={handleSortChange} />
+      <SortProducts onSortChange={handleSort} />
       <div className='main-content'>
         <aside className='sidebar'>
-          <FilterProductos onFilterChange={handleFilterChange}/>
+          <FilterProductos onFilterChange={handleFilter}/>
         </aside>
         <main className='product-list'>
+          {/* The parent component App.js pass the sortOrder, filters and onAddToCart props to the child component Product.js */}
           <Products sortOrder={sortOrder} filters={filters} onAddToCart={handleAddToCart}/>
         </main>
       </div>
-      {isCartOpen && <CartModal cart={cart} onClose={handleCloseModal} onRemoveItem={handleRemoveItem} onAmountChange={handleAmountChange} />}
+       {/* The parent component App.js pass the cart, onClose, onRemoveItem and onAmountChange props to the child component CartModal.js */}
+      {isCartModalOpen && <CartModal cart={cart} onClose={handleCloseCartModal} onRemoveItem={handleRemoveItem} onAmountChange={handleAmountChange} />}
       
     </div>
   );

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const Card = ({ product, onBuyClick }) => {
+const Card = ({ product, onSelect }) => {
   /* const formatPrice = (price) => {
     return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(price);
   } */
@@ -14,7 +14,7 @@ const Card = ({ product, onBuyClick }) => {
             <h3 className='name'>{product.name}</h3>
             <p className='features'>{product.features}</p>
             <p className='price'>{product.price}</p>
-            <button className='select-button' onClick={() => onBuyClick(product)}>Select</button>
+            <button className='select-button' onClick={() => onSelect(product)}>Select</button>
         </div>
       </div>
   );

@@ -1,4 +1,5 @@
 // src/components/FilterProducts.js
+
 import React, { useState } from 'react';
 import '../App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
