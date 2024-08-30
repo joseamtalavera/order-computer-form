@@ -1,6 +1,42 @@
-# Getting Started with Create React App
+# Computer Components Order Form
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project consists of a computer parts ordering form showcasing nine items, developed in React and styled using CSS.To avoid the need to leave the initial page and also to ensure that the form is capable of providing a simple and easy process for the user experience, I have included a modal that will take care of managing the final part of the order. 
+
+The ordering process starts by clicking on the select button of the desired item. The modal opens,  displaying the selected items and providing a smooth user experience by staying on the initial page. The modal functions as a shopping cart. Alternatively, the modal shopping cart can be accessed via the shopping cart icon in the top right corner of the page. I implemented the quantity feature in the modal, which allows users to change the number of items. If the modal is closed without deleting items, they will remain in the basket. This option allows us to continue adding items to the basket. 
+
+After the Proceed to Checkout button is clicked, a checkout page and a thank you page are implemented. All in the modal without leaving the initial page.
+
+
+## Features
+
+1. **Product Listing**:
+   - Displays 9 different computer components.
+   - Each product has a select button to add it to the cart.
+
+2. **Cart Modal**:
+   - Clicking the select button opens a modal showing the selected items.
+   - The cart can also be accessed from the cart icon in the top right corner.
+   - The modal allows users to increase or decrease the quantity of items.
+   - Items remain in the cart even if the modal is closed without deletion, allowing users to continue adding items.
+
+3. **Ordering Process**:
+   - After selecting items, users proceed to a payment form.
+   - Upon finalizing the payment, a thank you page is displayed.
+
+## Components
+
+- **App.js**: The main component that holds the state and renders other components.
+- **Products.js**: Displays the list of products.
+- **SortProducts.js**: Allows sorting of products.
+- **FilterProductos.js**: Provides filtering options for products.
+- **Card.js**: Represents individual product cards.
+- **CartModal.js**: The modal that acts as the cart, showing selected items and allowing quantity adjustments.
+- **FinalPayment.js**: The payment form component.
+- **Confirmation.js**: Displays a thank you message after payment is finalized.
+
+## Styles
+
+- **App.css**: Contains all the CSS styles used in the application.
 
 ## Available Scripts
 
@@ -26,45 +62,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

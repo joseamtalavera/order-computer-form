@@ -51,11 +51,14 @@ const CartModal = ({ cart, onClose, onRemoveItem, onAmountChange }) => {
                           type="number"
                           value={item.amount || 1}
                           min="1"
+                          /* This onChange event will call the onAmountChange function with the index of the item and the new amount 
+                          and passed to the parent component*/
                           onChange={(e) => onAmountChange(index, parseInt(e.target.value))}
                         />
                       </label>
                       <i
                         className="fas fa-trash delete-icon"
+                        /* This onClick event in the bin icon will call the onRemoveItem function with the index of the item and passed to the parent component */
                         onClick={() => onRemoveItem(index)}
                       >
                       </i>
@@ -67,15 +70,18 @@ const CartModal = ({ cart, onClose, onRemoveItem, onAmountChange }) => {
             </ul>
             <button
               className="proceed-button"
+              /* This onClick event will call the handleProceedToPayment function, opening the FinalPayment.js in the modal */
               onClick={handleProceedToPayment}
             >
               Proceed to Payment
             </button>
           </>
         )}
+        {/* handoleProceedTopayment is called. Then the expression view === 'payment' && (...) */}
         {view === 'payment' && (
           <FinalPayment cart={cart} onBackToCart={() => setView('cart')} onPaymentProcessed={handlePaymentProcessed} />
         )}
+        {/* handlePaymentProcessed is called. Then the expression view === 'confirmation' && (...) */}
         {view === 'confirmation' && (
           <Confirmation />
         )}

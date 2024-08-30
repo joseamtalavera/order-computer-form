@@ -29,7 +29,6 @@ const FilterProducts = ({ onFilterChange}) => {
 
   // Handle price change for both min and max prices
 const handlePriceChange = (type, value) => {
-    console.log(`Changing ${type} to:`, value);
     if (type === 'minPrice') {
       setMinPrice(value);
       onFilterChange('minPrice', value);
@@ -43,7 +42,6 @@ const handlePriceChange = (type, value) => {
   const incrementPrice = (type) => {
     const value = type === 'minPrice' ? minPrice : maxPrice;
     const newValue = (parseInt(value) || 0) + 1;
-    console.log(`Incrementing ${type} to:`, newValue);
     handlePriceChange(type, newValue);
   };
 
@@ -51,18 +49,15 @@ const handlePriceChange = (type, value) => {
   const decrementPrice = (type) => {
     const value = type === 'minPrice' ? minPrice : maxPrice;
     const newValue = (parseInt(value) || 0) - 1;
-    console.log(`Decrementing ${type} to:`, newValue); // Debug log
     handlePriceChange(type, newValue);
   };
 
   // Reset price filters
   const resetPrice = () => {
-    console.log('Resetting price filters'); // Debug log
     setMinPrice('');
     setMaxPrice('');
     onFilterChange('minPrice', 0);
     onFilterChange('maxPrice', Infinity);
-    //resetProducts();
   };
 
   return (
