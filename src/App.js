@@ -17,18 +17,18 @@ function App() {
   const handleSort = (order) => {
     setSortOrder(order);
   }
-
+  // Update the filter state with the new value
   const handleFilter = (filterType, value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       [filterType]: value,
     }));
   }
-
+  // Open the cart modal clicking on the cart icon
   const handleIconCartClick = () => {
     setIsCartModalOpen(true);
   }
-
+  // Close the cart modal
   const handleCloseCartModal = () => {
     setIsCartModalOpen(false);
   }
@@ -52,14 +52,14 @@ function App() {
     });
     setIsCartModalOpen(true);
   };
-
+  // Remove item from the cart using delete icon inside the cart modal
   const handleRemoveItem = (index) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.filter((item, i) => i !== index);
       return updatedCart;
     });
   }
-
+  // Update the amount of the product in the cart modal
   const handleAmountChange = (index, newAmount) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.map((item, i) => 

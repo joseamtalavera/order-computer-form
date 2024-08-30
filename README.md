@@ -1,10 +1,10 @@
 # Computer Components Order Form
 
-This project consists of a computer parts ordering form showcasing nine items, developed in React and styled using CSS.To avoid the need to leave the initial page and also to ensure that the form is capable of providing a simple and easy process for the user experience, I have included a modal that will take care of managing the final part of the order. 
+This project consists of a computer parts ordering form showcasing nine products, developed in React and styled using CSS. To avoid the need to leave the initial page and also to ensure that the form is capable of providing a simple and easy process for the user experience, I have included a modal that will take care of managing the final part of the order. 
 
-The ordering process starts by clicking on the select button of the desired item. The modal opens,  displaying the selected items and providing a smooth user experience by staying on the initial page. The modal functions as a shopping cart. Alternatively, the modal shopping cart can be accessed via the shopping cart icon in the top right corner of the page. I implemented the quantity feature in the modal, which allows users to change the number of items. If the modal is closed without deleting items, they will remain in the basket. This option allows us to continue adding items to the basket. 
+The ordering process starts by clicking on the select button of the desired product. The modal opens,  displaying the selected items and providing a smooth user experience by staying on the initial page. The modal functions as a shopping cart. Alternatively, the modal shopping cart can be accessed via the shopping cart icon in the top right corner of the page. I implemented the quantity feature in the modal, which allows users to change the number of items. If the modal is closed without deleting items, they will remain in the cart. This option allows us to continue adding items to the cart. 
 
-After the Proceed to Checkout button is clicked, a checkout page and a thank you page are implemented. All in the modal without leaving the initial page.
+After the Proceed to Payment button is clicked, a payment page and a thank you page are implemented. All in the modal without leaving the initial page.
 
 
 ## Features

@@ -14,7 +14,7 @@ const Card = ({ product, onSelect }) => {
             <h3 className='name'>{product.name}</h3>
             <p className='features'>{product.features}</p>
             <p className='price'>{product.price}</p>
-            {/* The onSelect function is called when the button is clicked, passing the product object
+            {/* The onSelect function is called when the button is clicked, passing the product object 
             to the onSelect function and updating the parent component Products.js */}
             <button className='select-button' onClick={() => onSelect(product)}>Select</button>
         </div>

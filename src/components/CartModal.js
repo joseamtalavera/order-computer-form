@@ -4,18 +4,18 @@ import React, { useState } from 'react';
 import FinalPayment from './FinalPayment';
 import Confirmation from './Confirmation';
 
-// The CartModal component receives the cart, onClose, onRemoveItem, onAmountChange props from the parent component App.js.
+// CartModal component receives the cart, onClose, onRemoveItem, onAmountChange props from the parent component App.js.
 const CartModal = ({ cart, onClose, onRemoveItem, onAmountChange }) => {
   // The view state variable is initialized with the value 'cart'.
   // We use the view state variable to determine which view to display in the modal: cart, payment, or confirmation.
   const [view, setView] = useState('cart');
 
-  // This halder function sets the view state variable to 'payment'.
+  // handleProceedToPayment function sets the view state variable to 'payment'.
   const handleProceedToPayment = () => {
     setView('payment');
   };
 
-  // And this will set the view state variable to 'confirmation'.
+  // handlePaymentProcessed funciton sets the view state variable to 'confirmation'.
   const handlePaymentProcessed = () => {
     setView('confirmation');
   };
@@ -32,7 +32,7 @@ const CartModal = ({ cart, onClose, onRemoveItem, onAmountChange }) => {
             <h2>Your Cart</h2>
             <div className="divider"></div>
             <ul>
-              {/* For each item in the cart array we render a list item */}
+              {/* For each item in the cart array we render a list product */}
               {cart.map((item, index) => (
                 <li key={index} className="cart-item">
                   <img src={item.image} alt={item.name} className='item-image' />

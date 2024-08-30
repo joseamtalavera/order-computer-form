@@ -1,10 +1,9 @@
 // src/components/Products.js
 
-// import the default export from the react module and the useState and useEffect hooks.
 // useState is a hook that allows us to add state to functional components.
 // useEffect is a hook that allows us to run side effects in functional components.
 import React, { useState, useEffect } from 'react';
-// impor the Card componet that we will use to display the products.
+// import the Card componet that we will use to display the products.
 import Card from './Card';
 
 // This is an array of objects with all the initial products that we will display.
@@ -20,17 +19,17 @@ const initialProducts = [
   { id: 9, name:'Peripheral G Pro X', image: 'periphe.png', features: 'Mechanical, RGB, Tactile Switches', price: '129€', type: 'peripheral' },
 ];
 
-// the Products component recieves from the parent component App.js the sortOrder, filters and onAddToCart props.
+// Products component recieves from the parent component App.js sortOrder, filters and onAddToCart props.
 const Products = ({sortOrder, filters, onAddToCart}) => {
   // The state varaible products is initialized with the initialProducts array.
   const [products, setProducts] = useState(initialProducts);
   
   useEffect(() => {
-    // initialize a consta variable and assign it the value of the initialProducts array.
+    // initialize a const variable and assign it the value of the initialProducts array.
     const filteredProducts = initialProducts
-      // .map() map the initialProducts array and createa a new array.
+      // .map() map the initialProducts array and create a new array.
       // product => is a callback function that takes a single parameter product.
-      // For each product object we create a new object.
+      // For each product object it creates a new object.
       // ...product is the spread operator that copies all the properties of the product object.
       // And we add a new property numericPrice which is the price of the product replaced by an integer without the € symbol.
       .map(product => ({
